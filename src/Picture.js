@@ -13,13 +13,6 @@ export default class Picture extends Component {
     this.state = {
       pictures: []
     };
-    this.onDrop = this.onDrop.bind(this);
-  }
-
-  onDrop(picture) {
-    this.setState({
-      pictures: this.state.pictures.concat(picture);
-    })
   }
 
   render() {
