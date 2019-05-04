@@ -1,7 +1,5 @@
 import React, { Component, Suspense } from 'react';
 import './App.css';
-import FacebookEmoji from 'react-facebook-emoji';
-import { Button, Header } from 'semantic-ui-react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import About from './About';
 import Picture from './Picture';

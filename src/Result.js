@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import FacebookEmoji from 'react-facebook-emoji';
-import { Button, Header, Image, Segment } from 'semantic-ui-react';
-import { Link, Redirect } from "react-router-dom";
+import { Button, Header, Segment } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
 
 export default class Result extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      jsonResponse: null,
+      emotion: this.props.location.state.emotion,
+    };
+  }
 
   render() {
     return (
       <Segment textAlign='center' style={{height: '100vh'}}>
         <Segment style={{height: '70vh'}}>
           <Header content='Your Result!' />
-          <FacebookEmoji type='wow' size='xxxl' />
+            {this.state.emotion != null ?
+              <FacebookEmoji type={this.state.emotion} size='xxxl' />
+            :
+              null
+            }
         </Segment>
         <Segment style={{height: '20vh'}}>
           <Link to='/'><Button primary color='blue' content='back' /></Link>
@@ -21,10 +32,3 @@ export default class Result extends Component {
   }
 
 }
-
-// <FacebookEmoji type="love"/>
-// <FacebookEmoji type="wow"/>
-// <FacebookEmoji type="yay"/>
-// <FacebookEmoji type="angry"/>
-// <FacebookEmoji type="haha"/>
-// <FacebookEmoji type="sad"/>

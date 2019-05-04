@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import FacebookEmoji from 'react-facebook-emoji';
 import { Button, Header, Segment } from 'semantic-ui-react';
-import {
-    Link,
-    Redirect
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class About extends Component {
 
@@ -16,7 +11,7 @@ export default class About extends Component {
           <Header content='About' />
         </Segment>
         <Segment>
-          <p>Ivan Ken Weng Chee | Yuting Lin</p>
+          <p>Lucas De Yuan Phang | Serene Chow Yuen Shan | Ivan Ken Weng Chee | Yuting Lin</p>
         </Segment>
         <Segment>
           <Link to='/'><Button content='Back' /></Link>

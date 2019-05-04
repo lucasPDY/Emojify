@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cloudinary": "^1.14.0",
+    "cloudinary-react": "^1.1.0",
+    "cors": "^2.8.5",
+    "create-object-url": "^1.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-facebook-emoji": "^1.0.11",
@@ -10,7 +14,8 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
     "react-webcam": "^1.1.1",
-    "semantic-ui-react": "^0.86.0"
+    "semantic-ui-react": "^0.86.0",
+    "url": "^0.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
