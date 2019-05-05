@@ -9,7 +9,8 @@ export default class Result extends Component {
     super(props);
     this.state = {
       jsonResponse: null,
-      emotion: this.props.location.state.emotion,
+      emotion: this.props.location.state ? this.props.location.state.emotion : 'yay',
+      count: this.props.location.state ? this.props.location.state.count : 2,
     };
   }
 
@@ -25,7 +26,7 @@ export default class Result extends Component {
             }
         </Segment>
         <Segment style={{height: '20vh'}}>
-          <Link to='/'><Button primary color='blue' content='back' /></Link>
+          <Link to={{pathname: '/', state: { count: this.state.count }}}><Button primary color='blue' content='back' /></Link>
         </Segment>
       </Segment>
     );

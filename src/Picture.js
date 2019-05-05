@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Webcam from "react-webcam";
 import { Button, Header, Segment } from 'semantic-ui-react';
 import { Link, Redirect } from "react-router-dom";
+import fakepets from './FAKEPETS.png';
+import faketaxi from './FAKETAXI.png';
 
 export default class Picture extends Component {
 
@@ -10,7 +12,8 @@ export default class Picture extends Component {
     this.state = {
       file: null,
       redirect: false,
-      emotion: null
+      emotion: null,
+      count: this.props.location.state ? this.props.location.state.count : 1,
     };
   }
   
@@ -106,7 +109,7 @@ export default class Picture extends Component {
         console.log(jsonData[0].faceAttributes.emotion);
         this.setState({emojiType: 'like'});
       }
-      this.setState({redirect: true});
+      this.setState({redirect: true, count: 2});
     });
   }
 
@@ -117,26 +120,31 @@ export default class Picture extends Component {
       facingMode: 'user'
     };
     if (this.state.redirect) {
-      return <Redirect to={{pathname: '/result', state: { emotion: this.state.emojiType }}} />;
+      return <Redirect to={{pathname: '/result', state: { emotion: this.state.emojiType, count: this.state.count + 1 }}} />;
     }
     return (
-      <Segment textAlign='center' style={{height: '100vh'}}>
-        <div style={{backgroundColor: '#4267b2', margin: 0, with: '100%', height: '5vh', flex: 1, flexDirection: 'row'}}>
+      <Segment style={{height: '100vh'}}>
+        <Segment style={{backgroundColor: '#4267b2', margin: 0, with: '100%', height: '5vh', flex: 1, flexDirection: 'row'}}>
           <div style={{bakgroundColor: '#4267b2', height: '4vh', flex: 0.2}}></div>
           <Segment style={{bakgroundColor: 'white', height: '4vh', flex: 0.7}}></Segment>
           <div style={{bakgroundColor: '#4267b2', height: '4vh', flex: 0.1}}></div>
-        </div>
-        <Segment>
-          <Header content='Take a photo!' />
-          <Webcam
-            audio={false}
-            height={350}
-            ref={(webcam) => {this.webcam = webcam;}}
-            facingMode='user'
-            screenshotFormat='image/jpeg'
-            width={350}
-            videoConstraints={videoConstraints}
-          />
+        </Segment>
+        <Segment style={{textAlign: 'center', display: 'flex', flex: 1, flexDirection: 'row', width: '100vw'}}>
+          <div style={{display: 'flex', flex: 1, flexDirection: 'column', width: '50vw'}}>
+            <img src={this.state.count === 1 ? fakepets : faketaxi} alt='' style={{width: 640, height: 480}} />
+          </div>
+          <div style={{textAlign: 'center', display: 'flex', flex: 1, flexDirection: 'column', width: '50vw'}}>
+            <Header content='Take a photo!' />
+            <Webcam
+              audio={false}
+              height={480}
+              ref={(webcam) => {this.webcam = webcam;}}
+              facingMode='user'
+              screenshotFormat='image/jpeg'
+              width={640}
+              videoConstraints={videoConstraints}
+            />
+          </div>
         </Segment>
         <Segment>
           <Button primary content='Capture' onClick={this.capture} />
