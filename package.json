@@ -12,7 +12,7 @@
     "react-facebook-emoji": "^1.0.11",
     "react-images-upload": "^1.2.6",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.0",
+    "react-scripts": "3.4.4",
     "react-webcam": "^1.1.1",
     "semantic-ui-react": "^0.86.0",
     "url": "^0.11.0"
